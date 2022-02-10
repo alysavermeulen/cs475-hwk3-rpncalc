@@ -37,6 +37,11 @@ double evaluate(char *s){
                 empty(stack);
                 return NAN;
             }
+            else if (strlen(token) > 1){ // if operator is invalid (e.g., '+*')
+                printf("Error: operator %s invalid.\n", token);
+                empty(stack);
+                return NAN;
+            }
             else{
                 double x = pop(stack); // second operand in equation
                 double y = pop(stack); // first operand in equation
@@ -69,7 +74,7 @@ double evaluate(char *s){
             }
         }
         else{ // if token is neither a number nor a punctuation (invalid input)
-            printf("Error: input %c unrecognized.\n", t);
+            printf("Error: input %s unrecognized.\n", token);
             empty(stack);
             return NAN;
         }
