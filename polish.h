@@ -9,5 +9,7 @@
 #define POLISH_H_
 
 // TODO: evaluate() declaration goes here
+// function declarations
+double evaluate(char *s);
 
 #endif /* POLISH_H_ */
