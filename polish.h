@@ -8,7 +8,6 @@
 #ifndef POLISH_H_
 #define POLISH_H_
 
-// TODO: evaluate() declaration goes here
 // function declarations
 double evaluate(char *s);
 

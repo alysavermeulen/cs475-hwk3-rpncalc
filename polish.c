@@ -13,17 +13,23 @@
 #include "stack.h"
 #include "polish.h"
 
-
+/**
+ * Evaluates an RPN expression
+ * @param s Pointer to the RPN expression string
+ * @return Final result of expression (NAN if error/undefined)
+ */
 double evaluate(char *s){
+    // create and initialize stack
     Stack *stack = (Stack*) malloc(sizeof(Stack));
 	stack->top = NULL;
+
     char* token = NULL;
 	token = strtok(s, " \t\n"); // get first token
 	while (token != NULL){  // go through tokens
         char t = token[0];
 		if (isdigit(t)){ // if token is a number (operand)
 			double val = atof(token);
-            push(stack,val);
+            push(stack,val); // push it onto the stack
 		}
         else if (ispunct(t)){ // if token is a punctuation
             if (size(stack) < 2){
@@ -50,14 +56,16 @@ double evaluate(char *s){
                         empty(stack);
                         return NAN;
                     }
-                    result = y / x;
+                    else{
+                        result = y / x;
+                    }
                 }
                 else{ // if token is not a valid operator
                     printf("Error: operator %c unrecognized.\n", t);
                     empty(stack);
                     return NAN;
                 }
-                push(stack,result);
+                push(stack,result); // push result onto stack
             }
         }
         else{ // if token is neither a number nor a punctuation (invalid input)

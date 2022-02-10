@@ -18,12 +18,11 @@ int main()
 	char eqn[MAX_EQ_LEN];	 // string to store the input RPN expression
 	char resp[MAX_EQ_LEN]; // string to store the user's response "y" or "n"
 
-	/* TODO */
 	do{
 		printf("Enter an equation (in RPN):\n");
-		fgets(eqn, MAX_EQ_LEN, stdin);
+		fgets(eqn, MAX_EQ_LEN, stdin); // get RPN expression from user
 		double result = evaluate(eqn);
-		if (!isnan(result)){
+		if (!isnan(result)){ // if no error occured while evaluating RPN expression
 			printf("%0.3f\n", result);
 		}
 		printf("\nEvaluate another? (y/n): ");
